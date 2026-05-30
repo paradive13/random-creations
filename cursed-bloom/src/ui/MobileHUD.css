@@ -1,0 +1,92 @@
+/* MobileHUD.css — Touch controls overlay for mobile */
+
+#mobile-controls {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  display: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body.is-mobile #mobile-controls { display: block; }
+
+/* Joystick zone */
+#joystick-zone {
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 44vw;
+  height: 55vw;
+  max-height: 45vh;
+  pointer-events: all;
+}
+
+/* Action buttons */
+#action-buttons {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.action-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.hud-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: all;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, transform 0.1s;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+}
+
+.hud-btn:active {
+  background: rgba(180, 0, 60, 0.6);
+  transform: scale(0.92);
+}
+
+.hud-btn.interact { font-size: 13px; letter-spacing: 1px; width: 64px; border-radius: 12px; }
+.hud-btn.run { font-size: 12px; letter-spacing: 1px; }
+.hud-btn.flashlight { font-size: 20px; }
+
+/* Rotate overlay */
+#rotate-overlay {
+  position: fixed; inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  gap: 20px;
+}
+
+#rotate-overlay .rotate-icon { font-size: 64px; animation: rotate-anim 2s ease-in-out infinite; }
+@keyframes rotate-anim {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+}
+#rotate-overlay p { font-size: 18px; opacity: 0.8; }
